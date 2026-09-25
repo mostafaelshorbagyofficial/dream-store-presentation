@@ -62,15 +62,21 @@
     </div>
 
     <div class="flex items-center gap-3 sm:gap-4">
+      <!-- Quick Image Player Button in Header -->
+      <button id="btn-open-gallery-header" class="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-[#6A3CF0] to-[#7D52F7] hover:from-[#7D52F7] hover:to-[#00D9FF] text-white text-xs font-bold transition shadow-[0_0_15px_rgba(106,60,240,0.4)] flex items-center gap-2">
+        <i data-lucide="play-circle" class="w-4 h-4 text-[#00D9FF]"></i>
+        <span>مشغل الصور (13 سلايد)</span>
+      </button>
+
       <!-- Presenter Badge -->
-      <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-[#190A36]/80 border border-white/10 text-xs">
+      <div class="hidden sm:flex items-center gap-2 px-3 py-1 rounded-xl bg-[#190A36]/80 border border-white/10 text-xs">
         <span class="text-gray-400 text-[11px]">Presented by:</span>
         <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-4 object-contain">
       </div>
     </div>
   </header>
 
-  <!-- FLOATING SIDEBAR NAVIGATION (Scroll spy quick links) -->
+  <!-- FLOATING SIDEBAR NAVIGATION -->
   <aside class="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col gap-1.5 p-2 rounded-2xl bg-[#190A36]/80 border border-[#6A3CF0]/30 backdrop-blur-xl shadow-2xl">
     <div class="text-[9px] font-bold text-center text-gray-400 font-en uppercase pb-1 border-b border-white/10">Jump</div>
     <a href="#section-hero" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-white hover:bg-[#6A3CF0]/30 transition text-center font-en">TOP</a>
@@ -89,6 +95,88 @@
     <a href="#section-13" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">13</a>
     <a href="#section-closing" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-white hover:bg-[#6A3CF0]/30 transition text-center font-en">END</a>
   </aside>
+
+  <!-- ==========================================
+       IMAGE PLAYER & LIGHTBOX MODAL
+  ========================================== -->
+  <div id="image-player-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-2xl hidden flex-col justify-between transition-opacity duration-300">
+    <!-- Top Player Bar -->
+    <div class="w-full bg-[#0B0217]/90 border-b border-white/10 px-4 sm:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span id="player-slide-badge" class="px-2.5 py-0.5 rounded-lg bg-[#6A3CF0] text-white text-xs font-black font-en">01</span>
+        <div>
+          <h3 id="player-slide-title" class="text-sm sm:text-base font-bold text-white">01 — BRAND CHALLENGE</h3>
+          <span id="player-slide-ar" class="text-xs text-[#00D9FF] font-medium">المشكلة الحالية</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Autoplay Slideshow button -->
+        <button id="player-btn-autoplay" title="تشغيل / إيقاف العرض التلقائي" class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-[#6A3CF0] text-xs font-semibold text-white transition flex items-center gap-1.5">
+          <i id="player-icon-play" data-lucide="play" class="w-4 h-4 text-[#00D9FF]"></i>
+          <span id="player-text-play" class="hidden sm:inline">تشغيل تلقائي</span>
+        </button>
+
+        <!-- Zoom In -->
+        <button id="player-btn-zoom-in" title="تكبير الصورة" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 transition">
+          <i data-lucide="zoom-in" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Zoom Out -->
+        <button id="player-btn-zoom-out" title="تصغير الصورة" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 transition">
+          <i data-lucide="zoom-out" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Reset Zoom -->
+        <button id="player-btn-zoom-reset" title="إعادة ضبط الحجم" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 transition">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Fullscreen -->
+        <button id="player-btn-fullscreen" title="ملء الشاشة" class="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 transition">
+          <i data-lucide="maximize" class="w-4 h-4"></i>
+        </button>
+
+        <!-- Close Button -->
+        <button id="player-btn-close" title="إغلاق المشغل" class="p-2 rounded-xl bg-red-500/20 hover:bg-red-500/40 text-red-300 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Viewport with Next/Prev Arrow Overlays -->
+    <div class="relative flex-1 flex items-center justify-center p-4 sm:p-8 overflow-hidden select-none" id="player-viewport">
+      <!-- Prev Button (Right side in RTL) -->
+      <button id="player-btn-prev" class="absolute right-4 sm:right-8 z-20 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#6A3CF0] text-white border border-white/20 backdrop-blur-md transition transform hover:scale-110 shadow-2xl">
+        <i data-lucide="chevron-right" class="w-6 h-6"></i>
+      </button>
+
+      <!-- Main Image Display -->
+      <div class="relative max-w-6xl max-h-full flex items-center justify-center overflow-hidden">
+        <img id="player-main-image" src="/assets/1.jpeg" alt="Slide Preview" class="max-w-full max-h-[72vh] object-contain rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-[#6A3CF0]/40 transition-transform duration-200 cursor-zoom-in">
+      </div>
+
+      <!-- Next Button (Left side in RTL) -->
+      <button id="player-btn-next" class="absolute left-4 sm:left-8 z-20 p-3 sm:p-4 rounded-full bg-black/60 hover:bg-[#6A3CF0] text-white border border-white/20 backdrop-blur-md transition transform hover:scale-110 shadow-2xl">
+        <i data-lucide="chevron-left" class="w-6 h-6"></i>
+      </button>
+    </div>
+
+    <!-- Bottom Thumbnail Strip Bar -->
+    <div class="w-full bg-[#0B0217]/95 border-t border-white/10 px-4 py-3 flex flex-col items-center gap-2">
+      <div class="w-full max-w-4xl flex items-center justify-center gap-2 overflow-x-auto py-1 scrollbar-none" id="player-thumbnail-strip">
+        <!-- 13 Thumbnails generated by JS -->
+      </div>
+      <div class="text-[11px] text-gray-400 flex items-center gap-3">
+        <span>استخدم الأسهم <strong>(← / →)</strong> للتنقل</span>
+        <span>•</span>
+        <span>مفتاح <strong>Space</strong> للتشغيل التلقائي</span>
+        <span>•</span>
+        <span><strong>Esc</strong> للإغلاق</span>
+      </div>
+    </div>
+  </div>
 
   <!-- MAIN CONTINUOUS LONG-SCROLL CONTAINER -->
   <main class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24 sm:space-y-32">
@@ -122,15 +210,21 @@
         "من أول موبايل… لحد اللي بتحلم بيه."
       </p>
 
-      <div class="flex items-center gap-3 text-xs sm:text-sm text-gray-300 font-en">
+      <div class="flex items-center gap-3 text-xs sm:text-sm text-gray-300 font-en mb-8">
         <span class="px-3 py-1 rounded-full bg-[#2E1065] border border-[#6A3CF0]/40 text-[#00D9FF] font-bold">SINCE 1998</span>
         <span>•</span>
         <span>FROM THE FIRST PHONE TO THE FUTURE</span>
       </div>
 
+      <!-- Quick Launch Image Player CTA -->
+      <button class="open-player-trigger px-6 py-3 rounded-2xl bg-gradient-to-r from-[#6A3CF0] to-[#00D9FF] text-white font-bold text-sm shadow-[0_0_25px_rgba(106,60,240,0.5)] hover:shadow-[0_0_35px_rgba(0,217,255,0.7)] transition transform hover:scale-105 flex items-center gap-2.5" data-slide="1">
+        <i data-lucide="play" class="w-4 h-4"></i>
+        <span>تشغيل وعرض كافة السلايدات في المشغل (13 صورة)</span>
+      </button>
+
       <!-- Scroll down indicator -->
       <div class="mt-12 flex flex-col items-center gap-2 text-gray-400 text-xs animate-bounce">
-        <span>مرر للأسفل لقراءة الاستراتيجية</span>
+        <span>أو مرر للأسفل لقراءة الاستراتيجية بالتفصيل</span>
         <i data-lucide="chevron-down" class="w-5 h-5 text-[#00D9FF]"></i>
       </div>
     </section>
@@ -139,9 +233,15 @@
          SECTION 01: BRAND CHALLENGE
     ========================================== -->
     <section id="section-01" class="space-y-8 scroll-mt-24">
-      <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <!-- 1. Large Image First with Click-to-Play Indicator -->
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="1">
         <img src="/assets/1.jpeg" alt="01 Brand Challenge" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -235,8 +335,14 @@
     ========================================== -->
     <section id="section-02" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="2">
         <img src="/assets/2.jpeg" alt="02 Brand Identity" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -311,8 +417,14 @@
     ========================================== -->
     <section id="section-03" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="3">
         <img src="/assets/3.jpeg" alt="03 The Big Idea" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -331,10 +443,10 @@
         </div>
 
         <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-          الفكرة المحورية ترتكز على تحويل Dream Store من مجرد متجر تقليدي لبيع الإلكترونيات إلى براند تكنولوجي ملهم يمتلك:
+          الفكرة المحورية ترتكز على تحويل Dream Store من مجرد متجر تقليدي لبيع الإلكترونيات إلى براند تكنولوجي ملهم يمتلك شخصية The Geek وقصة عريقة Since 1998 وتجربة متجر تفاعلية.
         </p>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center pt-2">
           <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
             <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">CHARACTER</span>
             <span class="text-xs font-bold text-white">شخصية مميزة (The Geek)</span>
@@ -345,7 +457,7 @@
           </div>
           <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
             <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">EXPERIENCE</span>
-            <span class="text-xs font-bold text-white">تجربة متكاملة للفروع</span>
+            <span class="text-xs font-bold text-white">تجربة داخل الفروع</span>
           </div>
           <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
             <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">COMMUNITY</span>
@@ -368,8 +480,14 @@
     ========================================== -->
     <section id="section-04" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="4">
         <img src="/assets/4.jpeg" alt="04 The Geek" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -407,20 +525,6 @@
             <p class="text-xs text-gray-300">نقطة تصوير مميزة وجذب بصري داخل الفروع والمعارض الكبرى لترسيخ الهوية الواقعية.</p>
           </div>
         </div>
-
-        <!-- Key Traits -->
-        <div class="pt-2">
-          <h4 class="text-xs font-bold text-gray-400 font-en uppercase mb-2">PERSONALITY TRAITS:</h4>
-          <div class="flex flex-wrap gap-2 text-xs">
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">💡 خبير (Expert)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">😄 كوميدي (Funny)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">🔍 فضولي (Curious)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">🤝 قريب من الناس (Friendly)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">❤️ موثوق (Trusted)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">⚡ ذكي (Smart)</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">💬 بسيط في الشرح (Simple)</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -429,8 +533,14 @@
     ========================================== -->
     <section id="section-05" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="5">
         <img src="/assets/5.jpeg" alt="05 Content DNA" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -494,8 +604,14 @@
     ========================================== -->
     <section id="section-06" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="6">
         <img src="/assets/6.jpeg" alt="06 Dream Since 1998" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -540,20 +656,6 @@
             <p class="text-[10px] text-gray-400">حلول وخدمات ذكية وروبوتات متقدمة.</p>
           </div>
         </div>
-
-        <!-- Series Examples -->
-        <div class="pt-2">
-          <h4 class="text-xs font-bold text-gray-400 font-en uppercase mb-2">CONTENT SERIES سلاسل المحتوى:</h4>
-          <div class="flex flex-wrap gap-2 text-xs text-gray-300">
-            <span class="px-3 py-1 rounded-lg bg-white/5">من 1998</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">فاكر أول موبايل؟</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">الموبايل اللي كان حلم</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">كان حلم وبقى عادي</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">مين فاكر الموبايل ده؟</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">التكنولوجيا اللي اختفت</span>
-            <span class="px-3 py-1 rounded-lg bg-white/5">صوت من الماضي</span>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -562,8 +664,14 @@
     ========================================== -->
     <section id="section-07" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="7">
         <img src="/assets/7.jpeg" alt="07 Community" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -616,8 +724,14 @@
     ========================================== -->
     <section id="section-08" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="8">
         <img src="/assets/8.jpeg" alt="08 Entertainment" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -662,8 +776,14 @@
     ========================================== -->
     <section id="section-09" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="9">
         <img src="/assets/9.jpeg" alt="09 Products" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -700,8 +820,14 @@
     ========================================== -->
     <section id="section-10" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="10">
         <img src="/assets/10.jpeg" alt="10 Store Experience" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -762,8 +888,14 @@
     ========================================== -->
     <section id="section-11" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="11">
         <img src="/assets/11.jpeg" alt="11 Omnichannel Experience" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -812,8 +944,14 @@
     ========================================== -->
     <section id="section-12" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="12">
         <img src="/assets/12.jpeg" alt="12 Future Vision" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -865,8 +1003,14 @@
     ========================================== -->
     <section id="section-13" class="space-y-8 scroll-mt-24">
       <!-- 1. Large Image First -->
-      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+      <div class="relative rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group cursor-pointer image-card-trigger" data-slide="13">
         <img src="/assets/13.jpeg" alt="13 Loyalty & Rewards" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+          <span class="px-4 py-2 rounded-xl bg-[#6A3CF0]/90 text-white font-bold text-xs flex items-center gap-2 shadow-xl">
+            <i data-lucide="maximize-2" class="w-4 h-4 text-[#00D9FF]"></i>
+            <span>فتح الصورة في المشغل التفاعلي</span>
+          </span>
+        </div>
       </div>
 
       <!-- 2. Clean Arabic Explanation Immediately Below -->
@@ -942,23 +1086,21 @@
         <span class="text-sm text-gray-400 font-en">www.pro-media.com</span>
       </div>
 
-      <div class="mt-8">
-        <a href="#section-hero" class="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-[#6A3CF0] text-xs font-bold text-white transition inline-flex items-center gap-2">
+      <div class="mt-8 flex flex-wrap gap-4">
+        <button class="open-player-trigger px-6 py-2.5 rounded-xl bg-[#6A3CF0] hover:bg-[#7D52F7] text-xs font-bold text-white transition inline-flex items-center gap-2 shadow-lg" data-slide="1">
+          <i data-lucide="play" class="w-4 h-4"></i>
+          <span>إعادة تشغيل مشغل الصور</span>
+        </button>
+        <a href="#section-hero" class="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white transition inline-flex items-center gap-2">
           <i data-lucide="arrow-up" class="w-4 h-4"></i>
-          <span>العودة إلى بداية العرض</span>
+          <span>العودة للأعلى</span>
         </a>
       </div>
     </section>
 
   </main>
 
-  <!-- Lucide icons activator -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (window.lucide) {
-        window.lucide.createIcons();
-      }
-    });
-  </script>
+  <!-- Image Player Interactive Logic -->
+  <script type="module" src="/src/main.js"></script>
 </body>
 </html>

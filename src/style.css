@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Tajawal:wght@400;500;700;900&display=swap');
+
+:root {
+  --primary-purple: #6A3CF0;
+  --primary-purple-hover: #7D52F7;
+  --dark-purple: #2E1065;
+  --deep-bg: #0d041a;
+  --surface-bg: #190a36;
+  --card-bg: rgba(46, 16, 101, 0.45);
+  --card-border: rgba(106, 60, 240, 0.35);
+  --light-purple: #E9D8FF;
+  --white: #FFFFFF;
+  --accent-cyan: #00D9FF;
+  --accent-cyan-glow: rgba(0, 217, 255, 0.4);
+  --purple-glow: rgba(106, 60, 240, 0.45);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  font-family: 'Cairo', 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--deep-bg);
+  color: #FFFFFF;
+  overflow-x: hidden;
+  min-height: 100vh;
+  direction: rtl;
+  text-align: right;
+  selection-background-color: var(--primary-purple);
+  selection-color: #FFFFFF;
+}
+
+/* Latin sub-fonts */
+.font-en, [data-lang="en"] {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Glowing Background Canvas & Noise */
+.bg-mesh {
+  background: 
+    radial-gradient(circle at 15% 15%, rgba(106, 60, 240, 0.22) 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(0, 217, 255, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 50% 50%, rgba(46, 16, 101, 0.4) 0%, transparent 65%),
+    #0b0217;
+}
+
+.glass-panel {
+  background: rgba(25, 10, 54, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(106, 60, 240, 0.28);
+  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-card {
+  background: rgba(46, 16, 101, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(233, 216, 255, 0.12);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  background: rgba(58, 20, 126, 0.55);
+  border-color: rgba(0, 217, 255, 0.4);
+  box-shadow: 0 10px 30px -5px rgba(106, 60, 240, 0.35), 0 0 15px rgba(0, 217, 255, 0.2);
+  transform: translateY(-3px);
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #FFFFFF 20%, #E9D8FF 60%, #6A3CF0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00D9FF 0%, #FFFFFF 85%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.badge-purple {
+  background: linear-gradient(135deg, rgba(106, 60, 240, 0.3) 0%, rgba(46, 16, 101, 0.6) 100%);
+  border: 1px solid rgba(106, 60, 240, 0.5);
+  color: #E9D8FF;
+}
+
+.badge-cyan {
+  background: rgba(0, 217, 255, 0.15);
+  border: 1px solid rgba(0, 217, 255, 0.4);
+  color: #00D9FF;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0d041a;
+}
+::-webkit-scrollbar-thumb {
+  background: #3c1975;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #6A3CF0;
+}
+
+/* Transitions */
+.slide-fade-enter {
+  opacity: 0;
+  transform: scale(0.98) translateY(12px);
+}
+.slide-fade-enter-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1), transform 450ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Pulse Glow Keyframes */
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(106, 60, 240, 0.3), 0 0 30px rgba(0, 217, 255, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(106, 60, 240, 0.6), 0 0 45px rgba(0, 217, 255, 0.35);
+  }
+}
+
+.animate-glow {
+  animation: pulseGlow 4s infinite ease-in-out;
+}
+
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: floatSlow 5s ease-in-out infinite;
+}
+
+/* Presentation 16:9 container helpers */
+.aspect-16-9 {
+  aspect-ratio: 16 / 9;
+}
+
+/* Range input styling for simulator */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  background: rgba(106, 60, 240, 0.3);
+  height: 8px;
+  border-radius: 4px;
+  outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #00D9FF;
+  box-shadow: 0 0 12px #00D9FF;
+  cursor: pointer;
+  border: 2px solid #FFFFFF;
+  transition: transform 0.15s ease;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}

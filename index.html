@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DREAM STORE — Brand & Content Strategy | Presented by ProMedia</title>
+  <meta name="description" content="Dream Store: Brand, Content & Marketing Development Strategy presented by ProMedia. Since 1998.">
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              purple: '#6A3CF0',
+              'purple-hover': '#7D52F7',
+              'dark-purple': '#2E1065',
+              'light-purple': '#E9D8FF',
+              cyan: '#00D9FF',
+              'deep-bg': '#0B0217',
+              surface: '#180A33'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'Tajawal', 'sans-serif'],
+            en: ['"Plus Jakarta Sans"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="/src/style.css">
+</head>
+<body class="bg-[#0B0217] text-white min-h-screen flex flex-col justify-between selection:bg-[#6A3CF0] selection:text-white font-sans antialiased">
+
+  <!-- Background decorative glowing orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#6A3CF0]/20 rounded-full blur-3xl animate-pulse"></div>
+    <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#2E1065]/35 rounded-full blur-[120px]"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[600px] h-[600px] bg-[#00D9FF]/10 rounded-full blur-[140px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#6a3cf0_1px,transparent_1px)] [background-size:32px_32px] opacity-10"></div>
+  </div>
+
+  <!-- INTRO SCREEN OVERLAY -->
+  <div id="intro-screen" class="fixed inset-0 z-50 bg-[#0B0217] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
+    <div class="max-w-3xl w-full flex flex-col items-center">
+      <!-- ProMedia Opening sequence -->
+      <div id="intro-promedia" class="flex flex-col items-center transition-all duration-1000 transform">
+        <div class="relative mb-6 p-4 rounded-3xl bg-[#190A36]/80 border border-[#6A3CF0]/40 shadow-[0_0_50px_rgba(106,60,240,0.35)] backdrop-blur-xl">
+          <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-20 sm:h-24 object-contain animate-float">
+        </div>
+        <span class="text-[#00D9FF] font-semibold text-lg sm:text-xl tracking-widest uppercase mb-2 font-en">ProMedia Presents</span>
+        <h2 class="text-2xl sm:text-3xl text-[#E9D8FF] font-bold mb-8">ProMedia تقدم</h2>
+      </div>
+
+      <!-- Dream Store Reveal -->
+      <div id="intro-dream" class="opacity-0 translate-y-8 transition-all duration-1000 flex flex-col items-center">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6A3CF0]/25 border border-[#6A3CF0]/60 text-[#E9D8FF] text-sm mb-4">
+          <i data-lucide="sparkles" class="w-4 h-4 text-[#00D9FF]"></i>
+          <span>استراتيجية تطوير البراند والمحتوى والتسويق</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-2 text-white">
+          DREAM <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9FF] to-[#6A3CF0]">STORE</span>
+        </h1>
+        <p class="text-xl sm:text-2xl text-[#E9D8FF] font-bold mb-3">
+          Brand, Content & Marketing Development Strategy
+        </p>
+        <p class="text-lg text-gray-300 font-medium mb-8">
+          من 1998… إلى المستقبل
+        </p>
+
+        <button id="btn-start-presentation" class="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-[#6A3CF0] to-[#00D9FF] text-white font-bold text-lg shadow-[0_0_30px_rgba(106,60,240,0.5)] hover:shadow-[0_0_45px_rgba(0,217,255,0.7)] transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3">
+          <span>بدء العرض التقديمي</span>
+          <i data-lucide="arrow-left" class="w-5 h-5 transition-transform group-hover:-translate-x-1"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUTRO SCREEN OVERLAY -->
+  <div id="outro-screen" class="fixed inset-0 z-50 bg-[#0B0217]/95 backdrop-blur-2xl hidden opacity-0 flex-col items-center justify-center p-6 text-center transition-all duration-700">
+    <div class="max-w-2xl w-full flex flex-col items-center">
+      <div class="mb-6 px-4 py-1 rounded-full bg-[#6A3CF0]/30 border border-[#6A3CF0]/50 text-[#E9D8FF] text-sm font-en">
+        SINCE 1998
+      </div>
+      <h2 class="text-4xl sm:text-5xl font-black text-white mb-3">
+        DREAM <span class="text-[#00D9FF]">STORE</span>
+      </h2>
+      <p class="text-2xl sm:text-3xl font-bold text-[#E9D8FF] mb-8">
+        "من أول موبايل… لحد اللي بتحلم بيه."
+      </p>
+
+      <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#00D9FF] to-transparent my-6"></div>
+
+      <div class="p-6 rounded-3xl bg-[#190A36]/90 border border-[#6A3CF0]/40 shadow-2xl flex flex-col items-center mb-8">
+        <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-16 object-contain mb-4">
+        <p class="text-xl font-bold text-white mb-1">ProMedia تشكركم</p>
+        <span class="text-sm text-gray-400 font-en">www.pro-media.com</span>
+      </div>
+
+      <div class="flex gap-4">
+        <button id="btn-replay" class="px-6 py-3 rounded-xl bg-[#6A3CF0] hover:bg-[#7D52F7] text-white font-bold transition flex items-center gap-2">
+          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+          <span>إعادة العرض من البداية</span>
+        </button>
+        <button id="btn-close-outro" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-medium transition">
+          <span>العودة للشرائح</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOP HEADER / NAV BAR -->
+  <header class="relative z-30 w-full border-b border-[#6A3CF0]/20 bg-[#0B0217]/80 backdrop-blur-xl px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <!-- Left: Brand Logo & Title -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6A3CF0] to-[#2E1065] flex items-center justify-center font-black text-white text-lg shadow-[0_0_15px_rgba(106,60,240,0.5)]">
+          D
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="font-black text-lg text-white tracking-wider font-en">DREAM STORE</span>
+            <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded bg-[#6A3CF0]/40 text-[#00D9FF] font-en font-bold border border-[#6A3CF0]/50">SINCE 1998</span>
+          </div>
+          <span class="text-xs text-gray-400 hidden sm:inline">Brand, Content & Marketing Strategy</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center: Active Section Badge (Desktop) -->
+    <div class="hidden lg:flex items-center gap-3">
+      <div class="px-3 py-1 rounded-full bg-[#190A36] border border-[#6A3CF0]/40 text-xs flex items-center gap-2">
+        <span id="header-section-badge" class="font-bold text-[#00D9FF] font-en">01</span>
+        <span class="text-gray-400">|</span>
+        <span id="header-section-title" class="font-bold text-[#E9D8FF]">BRAND CHALLENGE</span>
+      </div>
+    </div>
+
+    <!-- Right: Agency & Presentation Controls -->
+    <div class="flex items-center gap-2 sm:gap-3">
+      <!-- ProMedia Badge -->
+      <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-xl bg-[#190A36]/60 border border-white/10 text-xs">
+        <span class="text-gray-400 text-[11px]">بواسطة:</span>
+        <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-4 object-contain">
+      </div>
+
+      <!-- Master Slide Image Inspector Button -->
+      <button id="btn-toggle-master-slide" title="عرض السلايد الأصلي المرجعي" class="px-3 py-1.5 rounded-xl bg-[#6A3CF0]/20 hover:bg-[#6A3CF0]/40 border border-[#6A3CF0]/40 text-xs font-semibold text-[#E9D8FF] transition flex items-center gap-1.5">
+        <i data-lucide="image" class="w-4 h-4 text-[#00D9FF]"></i>
+        <span class="hidden sm:inline">السلايد الأصلي</span>
+      </button>
+
+      <!-- Sound FX Toggle -->
+      <button id="btn-toggle-sound" title="تشغيل / كتم المؤثرات الصوتية" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
+        <i id="icon-sound" data-lucide="volume-x" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Agenda / Table of Contents Drawer Toggle -->
+      <button id="btn-toggle-agenda" title="فهرس الشرائح" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
+        <i data-lucide="layout-grid" class="w-4 h-4"></i>
+      </button>
+
+      <!-- Fullscreen Toggle -->
+      <button id="btn-fullscreen" title="ملء الشاشة" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
+        <i data-lucide="maximize" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- SEGMENTED PROGRESS BAR -->
+  <div class="relative z-20 w-full bg-[#120526] border-b border-[#6A3CF0]/20 px-4 py-1.5">
+    <div class="max-w-7xl mx-auto flex items-center gap-1.5" id="progress-segments-container">
+      <!-- Generated via JS: 13 clickable steps -->
+    </div>
+  </div>
+
+  <!-- MAIN PRESENTATION VIEWPORT -->
+  <main class="relative z-10 flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col justify-center">
+    <div id="presentation-slide-container" class="relative w-full rounded-3xl overflow-hidden glass-panel border border-[#6A3CF0]/30 min-h-[620px] transition-all duration-500 flex flex-col">
+      <!-- Dynamic Slide Content rendered by JS -->
+    </div>
+  </main>
+
+  <!-- MASTER SLIDE MODAL VIEWER -->
+  <div id="master-slide-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8">
+    <div class="relative max-w-5xl w-full bg-[#180A33] border border-[#6A3CF0]/50 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
+      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0B0217]">
+        <div class="flex items-center gap-3">
+          <span class="px-2.5 py-0.5 rounded bg-[#6A3CF0] text-white text-xs font-bold font-en" id="modal-badge">01</span>
+          <h3 class="font-bold text-white text-base" id="modal-title">السلايد الأصلي المرجعي</h3>
+        </div>
+        <button id="btn-close-modal" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="p-4 flex items-center justify-center bg-black/40 max-h-[75vh] overflow-auto">
+        <img id="modal-image" src="/assets/1.jpeg" alt="Original Slide" class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-lg">
+      </div>
+      <div class="px-6 py-3 bg-[#0B0217] flex justify-between items-center text-xs text-gray-400">
+        <span>المصدر الاستراتيجي: D:\mhare3\pro\محل الموبيلات</span>
+        <span class="font-en">16:9 Master Reference</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AGENDA / SECTIONS DRAWER MODAL -->
+  <div id="agenda-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden justify-end">
+    <div class="w-full max-w-md bg-[#120526] h-full border-r border-[#6A3CF0]/40 p-6 flex flex-col justify-between overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
+          <div class="flex items-center gap-2">
+            <i data-lucide="list-ordered" class="w-5 h-5 text-[#00D9FF]"></i>
+            <h3 class="font-bold text-lg text-white">فهرس الاستراتيجية (13 قسماً)</h3>
+          </div>
+          <button id="btn-close-agenda" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300">
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+        <div class="space-y-2" id="agenda-list-container">
+          <!-- Rendered by JS -->
+        </div>
+      </div>
+
+      <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+        <span>Dream Store Strategy 2026</span>
+        <span class="text-[#00D9FF] font-en">Presented by ProMedia</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING BOTTOM NAVIGATION BAR -->
+  <footer class="relative z-30 w-full max-w-4xl mx-auto pb-6 px-4">
+    <div class="glass-panel rounded-2xl px-4 sm:px-6 py-3 border border-[#6A3CF0]/40 flex items-center justify-between shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
+      <!-- Previous Button -->
+      <button id="btn-prev-slide" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-[#6A3CF0]/40 text-gray-200 hover:text-white font-semibold text-sm transition flex items-center gap-2 border border-white/10 hover:border-[#6A3CF0]/50 disabled:opacity-30 disabled:pointer-events-none">
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        <span>السابق</span>
+      </button>
+
+      <!-- Center Slide Counter & Quick Switch -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-1.5 text-sm font-en">
+          <span id="current-slide-num" class="text-[#00D9FF] font-black text-lg">01</span>
+          <span class="text-gray-500 font-bold">/</span>
+          <span class="text-gray-400 font-bold">13</span>
+        </div>
+        <div class="h-4 w-px bg-white/10 hidden sm:block"></div>
+        <span id="current-slide-name-footer" class="text-xs text-gray-300 font-medium hidden sm:inline truncate max-w-[200px]">BRAND CHALLENGE</span>
+      </div>
+
+      <!-- Next Button -->
+      <button id="btn-next-slide" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#6A3CF0] to-[#7D52F7] hover:from-[#7D52F7] hover:to-[#00D9FF] text-white font-bold text-sm transition shadow-[0_0_20px_rgba(106,60,240,0.4)] flex items-center gap-2">
+        <span>التالي</span>
+        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

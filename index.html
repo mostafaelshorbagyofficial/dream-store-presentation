@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DREAM STORE — Brand & Content Strategy | Presented by ProMedia</title>
+  <title>DREAM STORE — Brand, Content & Marketing Strategy | ProMedia</title>
   <meta name="description" content="Dream Store: Brand, Content & Marketing Development Strategy presented by ProMedia. Since 1998.">
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -36,234 +36,929 @@
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="/src/style.css">
 </head>
-<body class="bg-[#0B0217] text-white min-h-screen flex flex-col justify-between selection:bg-[#6A3CF0] selection:text-white font-sans antialiased">
+<body class="bg-[#0B0217] text-white selection:bg-[#6A3CF0] selection:text-white font-sans antialiased">
 
   <!-- Background decorative glowing orbs -->
   <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#6A3CF0]/20 rounded-full blur-3xl animate-pulse"></div>
-    <div class="absolute top-1/2 right-0 w-[500px] h-[500px] bg-[#2E1065]/35 rounded-full blur-[120px]"></div>
-    <div class="absolute -bottom-40 left-1/3 w-[600px] h-[600px] bg-[#00D9FF]/10 rounded-full blur-[140px]"></div>
-    <div class="absolute inset-0 bg-[radial-gradient(#6a3cf0_1px,transparent_1px)] [background-size:32px_32px] opacity-10"></div>
+    <div class="absolute top-10 right-10 w-[500px] h-[500px] bg-[#6A3CF0]/15 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 left-0 w-[600px] h-[600px] bg-[#2E1065]/30 rounded-full blur-[160px]"></div>
+    <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#00D9FF]/10 rounded-full blur-[140px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#6a3cf0_1px,transparent_1px)] [background-size:40px_40px] opacity-10"></div>
   </div>
 
-  <!-- INTRO SCREEN OVERLAY -->
-  <div id="intro-screen" class="fixed inset-0 z-50 bg-[#0B0217] flex flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-3xl w-full flex flex-col items-center">
-      <!-- ProMedia Opening sequence -->
-      <div id="intro-promedia" class="flex flex-col items-center transition-all duration-1000 transform">
-        <div class="relative mb-6 p-4 rounded-3xl bg-[#190A36]/80 border border-[#6A3CF0]/40 shadow-[0_0_50px_rgba(106,60,240,0.35)] backdrop-blur-xl">
-          <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-20 sm:h-24 object-contain animate-float">
-        </div>
-        <span class="text-[#00D9FF] font-semibold text-lg sm:text-xl tracking-widest uppercase mb-2 font-en">ProMedia Presents</span>
-        <h2 class="text-2xl sm:text-3xl text-[#E9D8FF] font-bold mb-8">ProMedia تقدم</h2>
+  <!-- STICKY TOP BRAND HEADER -->
+  <header class="sticky top-0 z-40 w-full border-b border-[#6A3CF0]/25 bg-[#0B0217]/90 backdrop-blur-xl px-4 sm:px-8 py-3.5 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6A3CF0] to-[#2E1065] flex items-center justify-center font-black text-white text-lg shadow-[0_0_15px_rgba(106,60,240,0.5)]">
+        D
       </div>
-
-      <!-- Dream Store Reveal -->
-      <div id="intro-dream" class="opacity-0 translate-y-8 transition-all duration-1000 flex flex-col items-center">
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6A3CF0]/25 border border-[#6A3CF0]/60 text-[#E9D8FF] text-sm mb-4">
-          <i data-lucide="sparkles" class="w-4 h-4 text-[#00D9FF]"></i>
-          <span>استراتيجية تطوير البراند والمحتوى والتسويق</span>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-black text-lg text-white tracking-wider font-en">DREAM STORE</span>
+          <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded bg-[#6A3CF0]/40 text-[#00D9FF] font-en font-bold border border-[#6A3CF0]/50">SINCE 1998</span>
         </div>
-        <h1 class="text-4xl sm:text-6xl font-black tracking-tight mb-2 text-white">
-          DREAM <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9FF] to-[#6A3CF0]">STORE</span>
-        </h1>
-        <p class="text-xl sm:text-2xl text-[#E9D8FF] font-bold mb-3">
-          Brand, Content & Marketing Development Strategy
-        </p>
-        <p class="text-lg text-gray-300 font-medium mb-8">
-          من 1998… إلى المستقبل
-        </p>
-
-        <button id="btn-start-presentation" class="group relative px-8 py-4 rounded-2xl bg-gradient-to-r from-[#6A3CF0] to-[#00D9FF] text-white font-bold text-lg shadow-[0_0_30px_rgba(106,60,240,0.5)] hover:shadow-[0_0_45px_rgba(0,217,255,0.7)] transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3">
-          <span>بدء العرض التقديمي</span>
-          <i data-lucide="arrow-left" class="w-5 h-5 transition-transform group-hover:-translate-x-1"></i>
-        </button>
+        <span class="text-xs text-gray-400 hidden sm:inline">Brand, Content & Marketing Development Strategy</span>
       </div>
     </div>
-  </div>
 
-  <!-- OUTRO SCREEN OVERLAY -->
-  <div id="outro-screen" class="fixed inset-0 z-50 bg-[#0B0217]/95 backdrop-blur-2xl hidden opacity-0 flex-col items-center justify-center p-6 text-center transition-all duration-700">
-    <div class="max-w-2xl w-full flex flex-col items-center">
-      <div class="mb-6 px-4 py-1 rounded-full bg-[#6A3CF0]/30 border border-[#6A3CF0]/50 text-[#E9D8FF] text-sm font-en">
-        SINCE 1998
-      </div>
-      <h2 class="text-4xl sm:text-5xl font-black text-white mb-3">
-        DREAM <span class="text-[#00D9FF]">STORE</span>
-      </h2>
-      <p class="text-2xl sm:text-3xl font-bold text-[#E9D8FF] mb-8">
-        "من أول موبايل… لحد اللي بتحلم بيه."
-      </p>
-
-      <div class="w-24 h-0.5 bg-gradient-to-r from-transparent via-[#00D9FF] to-transparent my-6"></div>
-
-      <div class="p-6 rounded-3xl bg-[#190A36]/90 border border-[#6A3CF0]/40 shadow-2xl flex flex-col items-center mb-8">
-        <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-16 object-contain mb-4">
-        <p class="text-xl font-bold text-white mb-1">ProMedia تشكركم</p>
-        <span class="text-sm text-gray-400 font-en">www.pro-media.com</span>
-      </div>
-
-      <div class="flex gap-4">
-        <button id="btn-replay" class="px-6 py-3 rounded-xl bg-[#6A3CF0] hover:bg-[#7D52F7] text-white font-bold transition flex items-center gap-2">
-          <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
-          <span>إعادة العرض من البداية</span>
-        </button>
-        <button id="btn-close-outro" class="px-6 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-gray-200 font-medium transition">
-          <span>العودة للشرائح</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- TOP HEADER / NAV BAR -->
-  <header class="relative z-30 w-full border-b border-[#6A3CF0]/20 bg-[#0B0217]/80 backdrop-blur-xl px-4 sm:px-8 py-3.5 flex items-center justify-between">
-    <!-- Left: Brand Logo & Title -->
     <div class="flex items-center gap-3 sm:gap-4">
-      <div class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-[#6A3CF0] to-[#2E1065] flex items-center justify-center font-black text-white text-lg shadow-[0_0_15px_rgba(106,60,240,0.5)]">
-          D
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="font-black text-lg text-white tracking-wider font-en">DREAM STORE</span>
-            <span class="text-[10px] uppercase tracking-widest px-2 py-0.5 rounded bg-[#6A3CF0]/40 text-[#00D9FF] font-en font-bold border border-[#6A3CF0]/50">SINCE 1998</span>
-          </div>
-          <span class="text-xs text-gray-400 hidden sm:inline">Brand, Content & Marketing Strategy</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Center: Active Section Badge (Desktop) -->
-    <div class="hidden lg:flex items-center gap-3">
-      <div class="px-3 py-1 rounded-full bg-[#190A36] border border-[#6A3CF0]/40 text-xs flex items-center gap-2">
-        <span id="header-section-badge" class="font-bold text-[#00D9FF] font-en">01</span>
-        <span class="text-gray-400">|</span>
-        <span id="header-section-title" class="font-bold text-[#E9D8FF]">BRAND CHALLENGE</span>
-      </div>
-    </div>
-
-    <!-- Right: Agency & Presentation Controls -->
-    <div class="flex items-center gap-2 sm:gap-3">
-      <!-- ProMedia Badge -->
-      <div class="hidden md:flex items-center gap-2 px-3 py-1 rounded-xl bg-[#190A36]/60 border border-white/10 text-xs">
-        <span class="text-gray-400 text-[11px]">بواسطة:</span>
+      <!-- Presenter Badge -->
+      <div class="flex items-center gap-2 px-3 py-1 rounded-xl bg-[#190A36]/80 border border-white/10 text-xs">
+        <span class="text-gray-400 text-[11px]">Presented by:</span>
         <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-4 object-contain">
       </div>
-
-      <!-- Master Slide Image Inspector Button -->
-      <button id="btn-toggle-master-slide" title="عرض السلايد الأصلي المرجعي" class="px-3 py-1.5 rounded-xl bg-[#6A3CF0]/20 hover:bg-[#6A3CF0]/40 border border-[#6A3CF0]/40 text-xs font-semibold text-[#E9D8FF] transition flex items-center gap-1.5">
-        <i data-lucide="image" class="w-4 h-4 text-[#00D9FF]"></i>
-        <span class="hidden sm:inline">السلايد الأصلي</span>
-      </button>
-
-      <!-- Sound FX Toggle -->
-      <button id="btn-toggle-sound" title="تشغيل / كتم المؤثرات الصوتية" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
-        <i id="icon-sound" data-lucide="volume-x" class="w-4 h-4"></i>
-      </button>
-
-      <!-- Agenda / Table of Contents Drawer Toggle -->
-      <button id="btn-toggle-agenda" title="فهرس الشرائح" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
-        <i data-lucide="layout-grid" class="w-4 h-4"></i>
-      </button>
-
-      <!-- Fullscreen Toggle -->
-      <button id="btn-fullscreen" title="ملء الشاشة" class="p-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-gray-300 transition">
-        <i data-lucide="maximize" class="w-4 h-4"></i>
-      </button>
     </div>
   </header>
 
-  <!-- SEGMENTED PROGRESS BAR -->
-  <div class="relative z-20 w-full bg-[#120526] border-b border-[#6A3CF0]/20 px-4 py-1.5">
-    <div class="max-w-7xl mx-auto flex items-center gap-1.5" id="progress-segments-container">
-      <!-- Generated via JS: 13 clickable steps -->
-    </div>
-  </div>
+  <!-- FLOATING SIDEBAR NAVIGATION (Scroll spy quick links) -->
+  <aside class="fixed left-4 top-1/2 -translate-y-1/2 z-30 hidden xl:flex flex-col gap-1.5 p-2 rounded-2xl bg-[#190A36]/80 border border-[#6A3CF0]/30 backdrop-blur-xl shadow-2xl">
+    <div class="text-[9px] font-bold text-center text-gray-400 font-en uppercase pb-1 border-b border-white/10">Jump</div>
+    <a href="#section-hero" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-white hover:bg-[#6A3CF0]/30 transition text-center font-en">TOP</a>
+    <a href="#section-01" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">01</a>
+    <a href="#section-02" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">02</a>
+    <a href="#section-03" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">03</a>
+    <a href="#section-04" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">04</a>
+    <a href="#section-05" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">05</a>
+    <a href="#section-06" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">06</a>
+    <a href="#section-07" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">07</a>
+    <a href="#section-08" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">08</a>
+    <a href="#section-09" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">09</a>
+    <a href="#section-10" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">10</a>
+    <a href="#section-11" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">11</a>
+    <a href="#section-12" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">12</a>
+    <a href="#section-13" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-[#00D9FF] hover:bg-[#6A3CF0]/30 transition text-center font-en">13</a>
+    <a href="#section-closing" class="nav-dot px-2 py-1 rounded-lg text-[10px] font-bold text-gray-400 hover:text-white hover:bg-[#6A3CF0]/30 transition text-center font-en">END</a>
+  </aside>
 
-  <!-- MAIN PRESENTATION VIEWPORT -->
-  <main class="relative z-10 flex-1 w-full max-w-7xl mx-auto px-4 sm:px-8 py-6 flex flex-col justify-center">
-    <div id="presentation-slide-container" class="relative w-full rounded-3xl overflow-hidden glass-panel border border-[#6A3CF0]/30 min-h-[620px] transition-all duration-500 flex flex-col">
-      <!-- Dynamic Slide Content rendered by JS -->
-    </div>
+  <!-- MAIN CONTINUOUS LONG-SCROLL CONTAINER -->
+  <main class="relative z-10 w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-24 sm:space-y-32">
+
+    <!-- ==========================================
+         00. PROMEDIA OPENING HERO
+    ========================================== -->
+    <section id="section-hero" class="text-center pt-8 pb-12 flex flex-col items-center border-b border-[#6A3CF0]/25">
+      <!-- ProMedia Opening Card -->
+      <div class="inline-flex flex-col items-center mb-10 p-6 rounded-3xl bg-[#190A36]/70 border border-[#6A3CF0]/40 shadow-[0_0_45px_rgba(106,60,240,0.35)] backdrop-blur-xl">
+        <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-16 sm:h-20 object-contain mb-3 animate-float">
+        <span class="text-[#00D9FF] font-bold text-sm tracking-widest uppercase font-en">ProMedia Presents</span>
+        <h3 class="text-lg font-bold text-[#E9D8FF]">ProMedia تقدم</h3>
+      </div>
+
+      <!-- Main Strategy Title -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#6A3CF0]/25 border border-[#6A3CF0]/50 text-[#E9D8FF] text-xs sm:text-sm font-semibold mb-6">
+        <i data-lucide="sparkles" class="w-4 h-4 text-[#00D9FF]"></i>
+        <span>استراتيجية تطوير البراند والمحتوى والتسويق</span>
+      </div>
+
+      <h1 class="text-4xl sm:text-6xl font-black tracking-tight text-white mb-4">
+        DREAM <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00D9FF] via-[#E9D8FF] to-[#6A3CF0]">STORE</span>
+      </h1>
+
+      <p class="text-xl sm:text-3xl font-bold text-[#E9D8FF] mb-3">
+        Brand, Content & Marketing Development Strategy
+      </p>
+
+      <p class="text-2xl sm:text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00D9FF] to-[#E9D8FF] mb-6">
+        "من أول موبايل… لحد اللي بتحلم بيه."
+      </p>
+
+      <div class="flex items-center gap-3 text-xs sm:text-sm text-gray-300 font-en">
+        <span class="px-3 py-1 rounded-full bg-[#2E1065] border border-[#6A3CF0]/40 text-[#00D9FF] font-bold">SINCE 1998</span>
+        <span>•</span>
+        <span>FROM THE FIRST PHONE TO THE FUTURE</span>
+      </div>
+
+      <!-- Scroll down indicator -->
+      <div class="mt-12 flex flex-col items-center gap-2 text-gray-400 text-xs animate-bounce">
+        <span>مرر للأسفل لقراءة الاستراتيجية</span>
+        <i data-lucide="chevron-down" class="w-5 h-5 text-[#00D9FF]"></i>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 01: BRAND CHALLENGE
+    ========================================== -->
+    <section id="section-01" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/1.jpeg" alt="01 Brand Challenge" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">01</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">BRAND CHALLENGE</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">المشكلة الحالية والتحول المطلوب</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          تبدأ الاستراتيجية بتشخيص دقيق للوضع الراهن؛ حيث كان يتم التعامل مع <strong class="text-white">Dream Store</strong> في السابق كـ <span class="text-red-400 font-semibold">"مجرد محل موبايلات وإلكترونيات"</span>، مما حدّ من قدرة البراند على بناء علاقة عاطفية وتجربة ملهمة مع المستهلكين.
+        </p>
+
+        <!-- Current Problems vs Future Transformation -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+          <!-- Current Problems -->
+          <div class="p-5 rounded-2xl bg-[#0B0217]/60 border border-red-500/30 space-y-3">
+            <h3 class="text-sm font-bold text-red-400 flex items-center gap-2">
+              <i data-lucide="alert-circle" class="w-4 h-4"></i>
+              <span>التحديات ونقاط الضعف الحالية (Current):</span>
+            </h3>
+            <ul class="space-y-2 text-xs sm:text-sm text-gray-300">
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>الاعتماد الكبير على محتوى المنتجات والأسعار والعروض المباشرة فقط.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>عدم وجود شخصية واضحة ومميزة للبراند تميزه عن المنافسين.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>تاريخ 1998 العريق غير مستغل بشكل كامل في بناء قصة ورابط عاطفي.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>يبدو كـ Retail Account تقليدي وليس كبراند حقيقي ملهم.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>تشابه الأسماء في السوق وضعف التمايز التنافسي.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="text-red-400 font-bold shrink-0">✕</span>
+                <span>محدودية التفاعل مع الجمهور واقتصاره على الاستفسار عن الأسعار.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Future State -->
+          <div class="p-5 rounded-2xl bg-gradient-to-br from-[#2E1065]/70 to-[#190A36] border border-[#00D9FF]/40 space-y-3 shadow-[0_0_25px_rgba(106,60,240,0.2)]">
+            <h3 class="text-sm font-bold text-[#00D9FF] flex items-center gap-2">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+              <span>التحول المستقبلي (Future: A Technology Brand):</span>
+            </h3>
+            <p class="text-xs sm:text-sm text-gray-200">
+              التحول إلى <strong class="text-white">براند تكنولوجي متكامل</strong> له شخصية وقصة وتجربة استثنائية، من خلال إعادة صياغة رحلة العميل عبر 5 محطات:
+            </p>
+            <div class="grid grid-cols-5 gap-1.5 pt-2 text-center">
+              <div class="p-2 rounded-xl bg-[#6A3CF0]/30 border border-[#6A3CF0]/40">
+                <span class="text-[10px] text-[#00D9FF] font-bold font-en block">01. LEARN</span>
+                <span class="text-xs font-bold text-white">تتعلم</span>
+              </div>
+              <div class="p-2 rounded-xl bg-[#6A3CF0]/30 border border-[#6A3CF0]/40">
+                <span class="text-[10px] text-[#00D9FF] font-bold font-en block">02. EXPLORE</span>
+                <span class="text-xs font-bold text-white">تكتشف</span>
+              </div>
+              <div class="p-2 rounded-xl bg-[#6A3CF0]/30 border border-[#6A3CF0]/40">
+                <span class="text-[10px] text-[#00D9FF] font-bold font-en block">03. EXPERIENCE</span>
+                <span class="text-xs font-bold text-white">تجرب</span>
+              </div>
+              <div class="p-2 rounded-xl bg-[#6A3CF0]/30 border border-[#6A3CF0]/40">
+                <span class="text-[10px] text-[#00D9FF] font-bold font-en block">04. ENJOY</span>
+                <span class="text-xs font-bold text-white">تستمتع</span>
+              </div>
+              <div class="p-2 rounded-xl bg-[#6A3CF0]/30 border border-[#6A3CF0]/40">
+                <span class="text-[10px] text-[#00D9FF] font-bold font-en block">05. BUY</span>
+                <span class="text-xs font-bold text-white">تشتري</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 02: BRAND IDENTITY
+    ========================================== -->
+    <section id="section-02" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/2.jpeg" alt="02 Brand Identity" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">02</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">BRAND IDENTITY</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">هوية البراند ونظام التصميم البصري</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          عالم بصري متكامل وموحد يعكس شخصية <strong class="text-white">Dream Store</strong> ويجعلها علامة فريدة يسهل التعرف عليها في كل نقطة اتصال:
+          <span class="text-[#E9D8FF] font-semibold">"One Brand. One Color Language. One Recognizable World."</span>
+        </p>
+
+        <!-- Components Breakdown -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+          <!-- Color Palette -->
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-2.5">
+            <h4 class="text-xs font-bold text-[#00D9FF] font-en uppercase">COLOR PALETTE</h4>
+            <div class="space-y-1.5 text-xs">
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-black/40">
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[#6A3CF0]"></span>Primary Purple</span>
+                <span class="font-mono text-gray-400 font-en">#6A3CF0</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-black/40">
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[#2E1065]"></span>Dark Purple</span>
+                <span class="font-mono text-gray-400 font-en">#2E1065</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-black/40">
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[#E9D8FF]"></span>Light Purple</span>
+                <span class="font-mono text-gray-400 font-en">#E9D8FF</span>
+              </div>
+              <div class="flex items-center justify-between p-1.5 rounded-lg bg-black/40">
+                <span class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-[#00D9FF]"></span>Accent Cyan</span>
+                <span class="font-mono text-gray-400 font-en">#00D9FF</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Brand Elements -->
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-2.5">
+            <h4 class="text-xs font-bold text-[#00D9FF] font-en uppercase">BRAND ELEMENTS</h4>
+            <ul class="space-y-1.5 text-xs text-gray-300">
+              <li>• <strong class="text-white">D Icon:</strong> أيقونة البراند الانسيابية.</li>
+              <li>• <strong class="text-white">Star Element:</strong> عنصر التألق والابتكار.</li>
+              <li>• <strong class="text-white">Shape Language:</strong> أشكال ثلاثية الأبعاد وزجاجية.</li>
+              <li>• <strong class="text-white">Gradient Style:</strong> تدرجات نيونية أرجوانية ناعمة.</li>
+            </ul>
+          </div>
+
+          <!-- Visual Applications -->
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-2.5">
+            <h4 class="text-xs font-bold text-[#00D9FF] font-en uppercase">APPLICATIONS</h4>
+            <div class="grid grid-cols-2 gap-1.5 text-[11px] text-gray-300">
+              <span class="p-1.5 rounded bg-white/5 text-center">Social Media</span>
+              <span class="p-1.5 rounded bg-white/5 text-center">The Geek</span>
+              <span class="p-1.5 rounded bg-white/5 text-center">Store Design</span>
+              <span class="p-1.5 rounded bg-white/5 text-center">Packaging</span>
+              <span class="p-1.5 rounded bg-white/5 text-center">Campaigns</span>
+              <span class="p-1.5 rounded bg-white/5 text-center">Offline Exp</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 03: THE BIG IDEA
+    ========================================== -->
+    <section id="section-03" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/3.jpeg" alt="03 The Big Idea" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">03</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">THE BIG IDEA</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">الفكرة الأساسية للحملة</span>
+        </div>
+
+        <div class="p-5 rounded-2xl bg-gradient-to-r from-[#2E1065] to-[#6A3CF0]/40 border border-[#00D9FF]/40 text-center">
+          <p class="text-2xl sm:text-3xl font-black text-white mb-1">"من أول موبايل… لحد اللي بتحلم بيه."</p>
+          <span class="text-xs sm:text-sm text-[#00D9FF] font-en tracking-wider">FROM THE FIRST PHONE TO THE FUTURE</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          الفكرة المحورية ترتكز على تحويل Dream Store من مجرد متجر تقليدي لبيع الإلكترونيات إلى براند تكنولوجي ملهم يمتلك:
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 text-center">
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">CHARACTER</span>
+            <span class="text-xs font-bold text-white">شخصية مميزة (The Geek)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">HISTORY</span>
+            <span class="text-xs font-bold text-white">قصة حقيقية (Since 1998)</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">EXPERIENCE</span>
+            <span class="text-xs font-bold text-white">تجربة متكاملة للفروع</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">COMMUNITY</span>
+            <span class="text-xs font-bold text-white">مجتمع من العملاء</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">BUSINESS</span>
+            <span class="text-xs font-bold text-white">نمو المبيعات والولاء</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block mb-1">FUTURE</span>
+            <span class="text-xs font-bold text-white">ريادة طويلة المدى</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 04: THE GEEK
+    ========================================== -->
+    <section id="section-04" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/4.jpeg" alt="04 The Geek" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">04</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">THE GEEK</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">شخصية البراند الرسمية</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          <strong class="text-white">The Geek</strong> هو الخبير في التكنولوجيا بأسلوب بسيط وممتع؛ يمثل خبرة Dream Store وقربه من الناس منذ 1998.
+          <span class="text-[#00D9FF] font-semibold block mt-1">"مش مجرد مقدم محتوى .. ده وجه Dream Store."</span>
+        </p>
+
+        <!-- 3 Executions Breakdown -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-[#6A3CF0]/40 space-y-2">
+            <span class="text-xs font-bold text-[#00D9FF] font-en uppercase">01. 3D CHARACTER</span>
+            <h4 class="text-sm font-bold text-white">شخصية رقمية ثلاثية الأبعاد</h4>
+            <p class="text-xs text-gray-300">مخصصة للأنيميشن، الشروحات التقنية، الحملات الإعلانية، ومنشورات السوشيال ميديا اليومية.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-[#6A3CF0]/40 space-y-2">
+            <span class="text-xs font-bold text-[#00D9FF] font-en uppercase">02. MUPPET / HAND PUPPET</span>
+            <h4 class="text-sm font-bold text-white">عروسة تفاعلية باليد</h4>
+            <p class="text-xs text-gray-300">مخصصة للمحتوى الكوميدي، المقابلات في الشارع، الفعاليات الحية، والتفاعل المباشر مع العملاء والموظفين.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0B0217]/60 border border-[#6A3CF0]/40 space-y-2">
+            <span class="text-xs font-bold text-[#00D9FF] font-en uppercase">03. MAQUETTE</span>
+            <h4 class="text-sm font-bold text-white">مجسم ثابت للفروع</h4>
+            <p class="text-xs text-gray-300">نقطة تصوير مميزة وجذب بصري داخل الفروع والمعارض الكبرى لترسيخ الهوية الواقعية.</p>
+          </div>
+        </div>
+
+        <!-- Key Traits -->
+        <div class="pt-2">
+          <h4 class="text-xs font-bold text-gray-400 font-en uppercase mb-2">PERSONALITY TRAITS:</h4>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">💡 خبير (Expert)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">😄 كوميدي (Funny)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">🔍 فضولي (Curious)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">🤝 قريب من الناس (Friendly)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">❤️ موثوق (Trusted)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">⚡ ذكي (Smart)</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 text-gray-200">💬 بسيط في الشرح (Simple)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 05: CONTENT DNA
+    ========================================== -->
+    <section id="section-05" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/5.jpeg" alt="05 Content DNA" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">05</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">CONTENT DNA</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">أركان المحتوى السبعة</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          محتوى متنوع ومتوازن يجمع بين التكنولوجيا، الترفيه، التعليم، النوستالجيا، الكوميديا، المجتمع، والمنتجات:
+          <span class="text-[#E9D8FF] font-bold block mt-1">"قصص مختلفة .. بنفس الـGeek | One Content DNA. A Stronger Brand."</span>
+        </p>
+
+        <!-- 7 Pillars List -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-7 gap-3 pt-2">
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">01. TECH</span>
+            <h4 class="text-xs font-bold text-white">التكنولوجيا</h4>
+            <p class="text-[10px] text-gray-400">معلومات وشرح تقنيات مبسط.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">02. ENTERTAIN</span>
+            <h4 class="text-xs font-bold text-white">الترفيه</h4>
+            <p class="text-[10px] text-gray-400">تحديات وأسئلة ومسابقات.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">03. EDU</span>
+            <h4 class="text-xs font-bold text-white">التعليم</h4>
+            <p class="text-[10px] text-gray-400">مقارنات وأدلة قبل الشراء.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">04. NOSTALGIA</span>
+            <h4 class="text-xs font-bold text-white">النوستالجيا</h4>
+            <p class="text-[10px] text-gray-400">رحلة التكنولوجيا منذ 1998.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">05. COMEDY</span>
+            <h4 class="text-xs font-bold text-white">الكوميديا</h4>
+            <p class="text-[10px] text-gray-400">اسكتشات ومواقف يومية مضحكة.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">06. COMMUNITY</span>
+            <h4 class="text-xs font-bold text-white">المجتمع</h4>
+            <p class="text-[10px] text-gray-400">قصص العملاء وتجارب الموظفين.</p>
+          </div>
+          <div class="p-3.5 rounded-2xl bg-[#0B0217]/60 border border-white/10 space-y-1 text-center">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">07. PRODUCTS</span>
+            <h4 class="text-xs font-bold text-white">المنتجات</h4>
+            <p class="text-[10px] text-gray-400">أحدث العروض والمراجعات الحية.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 06: DREAM SINCE 1998
+    ========================================== -->
+    <section id="section-06" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/6.jpeg" alt="06 Dream Since 1998" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">06</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">DREAM SINCE 1998</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">النوستالجيا كقصة مستمرة</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          استخدام النوستالجيا كجسر وجداني يربط أجيال التسعينيات وبداية الألفية بجيل الحاضر، مع إبراز مسيرة التطور التكنولوجي لـ Dream Store منذ 1998 حتى المستقبل.
+        </p>
+
+        <!-- Timeline 5 Steps -->
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2">
+          <div class="p-3.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-sm font-black text-[#00D9FF] font-en block">1998</span>
+            <h4 class="text-xs font-bold text-white mb-1">البداية والشغف</h4>
+            <p class="text-[10px] text-gray-400">أجهزة النوكيا والجيل الأول والشاشات الأحادية.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-sm font-black text-[#00D9FF] font-en block">2000 - 2010</span>
+            <h4 class="text-xs font-bold text-white mb-1">جيل التغيير</h4>
+            <p class="text-[10px] text-gray-400">الشاشات الملونة والكاميرات ونغمات الـ MP3.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-sm font-black text-[#00D9FF] font-en block">2010 - 2020</span>
+            <h4 class="text-xs font-bold text-white mb-1">جيل السوشيال</h4>
+            <p class="text-[10px] text-gray-400">الهواتف الذكية وتطبيقات التواصل وشاشات اللمس.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-sm font-black text-[#00D9FF] font-en block">2026</span>
+            <h4 class="text-xs font-bold text-white mb-1">الحاضر المتكامل</h4>
+            <p class="text-[10px] text-gray-400">هواتف الذكاء الاصطناعي وتجربة المتجر المبتكرة.</p>
+          </div>
+          <div class="p-3.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-sm font-black text-[#00D9FF] font-en block">THE FUTURE</span>
+            <h4 class="text-xs font-bold text-white mb-1">المستقبل</h4>
+            <p class="text-[10px] text-gray-400">حلول وخدمات ذكية وروبوتات متقدمة.</p>
+          </div>
+        </div>
+
+        <!-- Series Examples -->
+        <div class="pt-2">
+          <h4 class="text-xs font-bold text-gray-400 font-en uppercase mb-2">CONTENT SERIES سلاسل المحتوى:</h4>
+          <div class="flex flex-wrap gap-2 text-xs text-gray-300">
+            <span class="px-3 py-1 rounded-lg bg-white/5">من 1998</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">فاكر أول موبايل؟</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">الموبايل اللي كان حلم</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">كان حلم وبقى عادي</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">مين فاكر الموبايل ده؟</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">التكنولوجيا اللي اختفت</span>
+            <span class="px-3 py-1 rounded-lg bg-white/5">صوت من الماضي</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 07: COMMUNITY
+    ========================================== -->
+    <section id="section-07" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/7.jpeg" alt="07 Community" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">07</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">COMMUNITY</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">المجتمع وبناء الولاء</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          تحويل العملاء إلى مجتمع حقيقي ينتمي لعالم Dream Store، من خلال 4 أركان أساسية:
+          <span class="text-[#00D9FF] font-semibold">LEARN • SHARE • EXPLORE • CONNECT</span>.
+        </p>
+
+        <!-- 6 Community Experiences -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">IN-STORE EVENTS</span>
+            <h4 class="text-xs font-bold text-white mt-1">فعاليات الفروع</h4>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">TECH TALKS</span>
+            <h4 class="text-xs font-bold text-white mt-1">لقاءات وورش عمل</h4>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">CHALLENGES</span>
+            <h4 class="text-xs font-bold text-white mt-1">تحديات ومسابقات</h4>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">USER STORIES</span>
+            <h4 class="text-xs font-bold text-white mt-1">قصص العملاء</h4>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">ONLINE GROUP</span>
+            <h4 class="text-xs font-bold text-white mt-1">مجتمع أونلاين</h4>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10 text-center">
+            <span class="text-[10px] text-[#00D9FF] font-en block">GAMIFICATION</span>
+            <h4 class="text-xs font-bold text-white mt-1">نقاط وتحديات</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 08: ENTERTAINMENT
+    ========================================== -->
+    <section id="section-08" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/8.jpeg" alt="08 Entertainment" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">08</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">ENTERTAINMENT</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">الترفيه وصناعة البهجة</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          مش مجرد محتوى تعليمي أو ترويجي؛ Dream Store يقدم محتوى ترفيهياً خفيفاً يقرب البراند من قلوب الناس ويجعله جزءاً ممتعاً من يومياتهم:
+          <span class="text-[#E9D8FF] font-semibold block mt-1">"الترفيه جزء من التجربة.. مش بس من المشاهدة."</span>
+        </p>
+
+        <!-- Entertainment Formats Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] block">Unboxing كوميدي</span>
+            <span class="text-[11px] text-gray-400">فتح علب بأسلوب The Geek الممتع.</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] block">Comparison Battle</span>
+            <span class="text-[11px] text-gray-400">مقارنات طريفة بين الأجهزة المنافسة.</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] block">Street Interviews</span>
+            <span class="text-[11px] text-gray-400">مقابلات وأسئلة تفاعلية في الشارع.</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] block">Tech Myths</span>
+            <span class="text-[11px] text-gray-400">تصحيح خرافات التكنولوجيا الشائعة.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 09: PRODUCTS
+    ========================================== -->
+    <section id="section-09" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/9.jpeg" alt="09 Products" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">09</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">PRODUCTS</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">المنتجات والضمان المعتمد</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          تشكيلة واسعة من المنتجات الأصلية تلبي جميع مجالات الحياة (الدراسة، العمل، الترفيه، السفر، الرياضة، والمنزل الذكي) مدعومة بضمان رسمي وخدمة ما بعد البيع:
+          <span class="text-[#00D9FF] font-semibold block mt-1">"مش مجرد منتجات .. دي اختيارات تناسب حياتك."</span>
+        </p>
+
+        <!-- Product Categories -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 text-center pt-2">
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الموبايلات</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الإكسسوارات</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">التابلت</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">اللابتوبات</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الأجهزة الذكية</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الجيمينج</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الصوتيات</div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10 text-xs font-bold text-white">الحياة اليومية</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 10: STORE EXPERIENCE
+    ========================================== -->
+    <section id="section-10" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/10.jpeg" alt="10 Store Experience" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">10</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">STORE EXPERIENCE</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">تجربة المتجر والرحلة التفاعلية</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          الفروع ليست مجرد نقاط بيع، بل وجهات تقنية متكاملة تجمع بين التصميم العصري، التجربة الحية، استشارة الخبراء، وركن الاستراحة والقهوة:
+          <span class="text-[#E9D8FF] font-semibold block mt-1">"مش مجرد متجر .. دي تجربة بتقربك من عالمك."</span>
+        </p>
+
+        <!-- 8 Journey Steps -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 pt-2 text-center">
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-bold font-en block">01</span>
+            <span class="text-xs font-bold text-white">المدخل المميز</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-bold font-en block">02</span>
+            <span class="text-xs font-bold text-white">الاستكشاف</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-bold font-en block">03</span>
+            <span class="text-xs font-bold text-white">المعاينة والمقارنة</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-en block">04</span>
+            <span class="text-xs font-bold text-white">استشارة الخبراء</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-en block">05</span>
+            <span class="text-xs font-bold text-white">الإكسسوارات</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-en block">06</span>
+            <span class="text-xs font-bold text-white">الدفع السريع</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-en block">07</span>
+            <span class="text-xs font-bold text-white">خدمة Dream Care</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-[10px] text-[#00D9FF] font-en block">08</span>
+            <span class="text-xs font-bold text-white">الاستراحة والترفيه</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 11: OMNICHANNEL EXPERIENCE
+    ========================================== -->
+    <section id="section-11" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/11.jpeg" alt="11 Omnichannel Experience" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">11</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">OMNICHANNEL EXPERIENCE</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">تجربة متكاملة في كل مكان</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          ربط سلس بين المتجر الفعلي، المتجر الإلكتروني، تطبيق الموبايل، وسائل التواصل، وخدمة العملاء لتقديم تجربة تسوق موحدة ومرنة أينما كان العميل:
+          <span class="text-[#00D9FF] font-semibold block mt-1">"SAME PASSION. EVERYWHERE WITH YOU."</span>
+        </p>
+
+        <!-- 5 Channels -->
+        <div class="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2 text-center">
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">01. IN-STORE</span>
+            <span class="text-xs font-bold text-white">الفروع وتجربة اللمس</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">02. ONLINE STORE</span>
+            <span class="text-xs font-bold text-white">الموقع الإلكتروني</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">03. MOBILE APP</span>
+            <span class="text-xs font-bold text-white">تطبيق الموبايل</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">04. SOCIAL MEDIA</span>
+            <span class="text-xs font-bold text-white">قنوات السوشيال</span>
+          </div>
+          <div class="p-3 rounded-xl bg-[#0B0217]/60 border border-white/10">
+            <span class="text-xs font-bold text-[#00D9FF] font-en block">05. SUPPORT</span>
+            <span class="text-xs font-bold text-white">خدمة العملاء 24/7</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 12: FUTURE VISION
+    ========================================== -->
+    <section id="section-12" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/12.jpeg" alt="12 Future Vision" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">12</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">FUTURE VISION</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">رؤيتنا للمستقبل والتوسع الإقليمي</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          Dream Store ليست مجرد سلسلة متاجر محلية، بل بداية رحلة لتكون الوجهة الأولى للتكنولوجيا والترفيه في مصر والمنطقة:
+          <span class="text-[#E9D8FF] font-semibold block mt-1">"مش واقفين هنا .. دي مجرد بداية لرحلة أكبر | SAME PASSION. A BIGGER TOMORROW."</span>
+        </p>
+
+        <!-- Targets and Markets Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2 text-center">
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-[#6A3CF0]/30 to-[#0B0217] border border-[#00D9FF]/30">
+            <span class="text-3xl font-black text-[#00D9FF] font-en block mb-1">2X</span>
+            <span class="text-xs font-bold text-white">مضاعفة عدد الفروع</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-[#6A3CF0]/30 to-[#0B0217] border border-[#00D9FF]/30">
+            <span class="text-3xl font-black text-[#00D9FF] font-en block mb-1">3X</span>
+            <span class="text-xs font-bold text-white">زيادة المبيعات أونلاين</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-[#6A3CF0]/30 to-[#0B0217] border border-[#00D9FF]/30">
+            <span class="text-3xl font-black text-[#00D9FF] font-en block mb-1">1M+</span>
+            <span class="text-xs font-bold text-white">أكثر من مليون عميل سعيد</span>
+          </div>
+          <div class="p-4 rounded-2xl bg-gradient-to-br from-[#6A3CF0]/30 to-[#0B0217] border border-[#00D9FF]/30">
+            <span class="text-3xl font-black text-[#00D9FF] font-en block mb-1">#1</span>
+            <span class="text-xs font-bold text-white">الوجهة الأولى للتقنية والترفيه</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 pt-2 text-xs">
+          <span class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10">🇪🇬 مصر (التوسع المحلي)</span>
+          <span class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10">🇦🇪 الإمارات (دبي وأبوظبي)</span>
+          <span class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10">🇸🇦 السعودية (الرياض وجدة)</span>
+          <span class="px-4 py-1.5 rounded-xl bg-white/5 border border-white/10">🌐 الأسواق الإقليمية</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         SECTION 13: LOYALTY & REWARDS
+    ========================================== -->
+    <section id="section-13" class="space-y-8 scroll-mt-24">
+      <!-- 1. Large Image First -->
+      <div class="rounded-3xl overflow-hidden border border-[#6A3CF0]/40 shadow-[0_15px_40px_rgba(0,0,0,0.6)] bg-[#120526] group">
+        <img src="/assets/13.jpeg" alt="13 Loyalty & Rewards" class="w-full h-auto object-cover transition duration-500 group-hover:scale-[1.01]" loading="lazy">
+      </div>
+
+      <!-- 2. Clean Arabic Explanation Immediately Below -->
+      <div class="p-6 sm:p-10 rounded-3xl bg-[#190A36]/60 border border-[#6A3CF0]/30 backdrop-blur-xl space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[#6A3CF0]/20 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 rounded-xl bg-[#6A3CF0] text-white font-black text-sm font-en">13</span>
+            <h2 class="text-2xl sm:text-3xl font-black text-white font-en">LOYALTY & REWARDS</h2>
+          </div>
+          <span class="text-xl sm:text-2xl font-bold text-[#00D9FF]">برنامج الولاء والمكافآت</span>
+        </div>
+
+        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+          برنامج متكامل يكافئ العملاء على كل عملية شراء وتفاعل:
+          <span class="text-[#00D9FF] font-semibold">SHOP → EARN POINTS → REDEEM REWARDS → LEVEL UP</span>.
+        </p>
+
+        <!-- 4 Tiers -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+          <div class="p-4 rounded-2xl bg-[#0B0217]/70 border border-amber-700/40 space-y-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold text-white bg-amber-800 font-en">BRONZE</span>
+            <h4 class="text-sm font-bold text-white">المستوى البرونزي</h4>
+            <p class="text-xs text-gray-300">نقاط ترحيبية، عروض للأعضاء، وهدية عيد الميلاد.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0B0217]/70 border border-slate-400/40 space-y-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold text-white bg-slate-600 font-en">SILVER</span>
+            <h4 class="text-sm font-bold text-white">المستوى الفضي</h4>
+            <p class="text-xs text-gray-300">معدل نقاط أعلى، دخول مبكر للعروض، وخصومات إضافية.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0B0217]/70 border border-yellow-500/40 space-y-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold text-white bg-amber-500 font-en">GOLD</span>
+            <h4 class="text-sm font-bold text-white">المستوى الذهبي</h4>
+            <p class="text-xs text-gray-300">عروض VIP حصرية، شحن مجاني، ودعم أولوية.</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-[#0B0217]/70 border border-purple-400/40 space-y-2">
+            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold text-white bg-purple-600 font-en">PLATINUM</span>
+            <h4 class="text-sm font-bold text-white">المستوى البلاتيني</h4>
+            <p class="text-xs text-gray-300">أعلى معدل نقاط، دعوات لفعاليات خاصة، ومدير حساب VIP.</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-2xl bg-gradient-to-r from-[#2E1065] to-[#6A3CF0]/30 border border-white/10 text-center">
+          <p class="text-sm font-bold text-white">"لأنك مش مجرد عميل .. أنت جزء من عائلة Dream Store"</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         CLOSING: PROMEDIA THANK YOU
+    ========================================== -->
+    <section id="section-closing" class="text-center pt-12 pb-20 flex flex-col items-center border-t border-[#6A3CF0]/25">
+      <div class="mb-4 px-4 py-1 rounded-full bg-[#6A3CF0]/30 border border-[#6A3CF0]/50 text-[#E9D8FF] text-xs font-en">
+        SINCE 1998
+      </div>
+
+      <h2 class="text-4xl sm:text-5xl font-black text-white mb-2">
+        DREAM <span class="text-[#00D9FF]">STORE</span>
+      </h2>
+
+      <p class="text-xl sm:text-2xl font-bold text-[#E9D8FF] mb-10">
+        "من أول موبايل… لحد اللي بتحلم بيه."
+      </p>
+
+      <div class="w-32 h-0.5 bg-gradient-to-r from-transparent via-[#00D9FF] to-transparent my-4"></div>
+
+      <!-- ProMedia Closing Card -->
+      <div class="p-8 rounded-3xl bg-[#190A36]/90 border border-[#6A3CF0]/50 shadow-2xl flex flex-col items-center max-w-md w-full">
+        <img src="/assets/promedia-logo.png" alt="ProMedia" class="h-16 object-contain mb-4">
+        <h3 class="text-2xl font-bold text-white mb-1">ProMedia تشكركم</h3>
+        <span class="text-sm text-gray-400 font-en">www.pro-media.com</span>
+      </div>
+
+      <div class="mt-8">
+        <a href="#section-hero" class="px-6 py-2.5 rounded-xl bg-white/10 hover:bg-[#6A3CF0] text-xs font-bold text-white transition inline-flex items-center gap-2">
+          <i data-lucide="arrow-up" class="w-4 h-4"></i>
+          <span>العودة إلى بداية العرض</span>
+        </a>
+      </div>
+    </section>
+
   </main>
 
-  <!-- MASTER SLIDE MODAL VIEWER -->
-  <div id="master-slide-modal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4 sm:p-8">
-    <div class="relative max-w-5xl w-full bg-[#180A33] border border-[#6A3CF0]/50 rounded-3xl overflow-hidden shadow-2xl flex flex-col">
-      <div class="flex items-center justify-between px-6 py-4 border-b border-white/10 bg-[#0B0217]">
-        <div class="flex items-center gap-3">
-          <span class="px-2.5 py-0.5 rounded bg-[#6A3CF0] text-white text-xs font-bold font-en" id="modal-badge">01</span>
-          <h3 class="font-bold text-white text-base" id="modal-title">السلايد الأصلي المرجعي</h3>
-        </div>
-        <button id="btn-close-modal" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300">
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-      </div>
-      <div class="p-4 flex items-center justify-center bg-black/40 max-h-[75vh] overflow-auto">
-        <img id="modal-image" src="/assets/1.jpeg" alt="Original Slide" class="max-w-full max-h-[70vh] rounded-xl object-contain shadow-lg">
-      </div>
-      <div class="px-6 py-3 bg-[#0B0217] flex justify-between items-center text-xs text-gray-400">
-        <span>المصدر الاستراتيجي: D:\mhare3\pro\محل الموبيلات</span>
-        <span class="font-en">16:9 Master Reference</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- AGENDA / SECTIONS DRAWER MODAL -->
-  <div id="agenda-drawer" class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden justify-end">
-    <div class="w-full max-w-md bg-[#120526] h-full border-r border-[#6A3CF0]/40 p-6 flex flex-col justify-between overflow-y-auto">
-      <div>
-        <div class="flex items-center justify-between pb-4 border-b border-white/10 mb-6">
-          <div class="flex items-center gap-2">
-            <i data-lucide="list-ordered" class="w-5 h-5 text-[#00D9FF]"></i>
-            <h3 class="font-bold text-lg text-white">فهرس الاستراتيجية (13 قسماً)</h3>
-          </div>
-          <button id="btn-close-agenda" class="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-gray-300">
-            <i data-lucide="x" class="w-5 h-5"></i>
-          </button>
-        </div>
-
-        <div class="space-y-2" id="agenda-list-container">
-          <!-- Rendered by JS -->
-        </div>
-      </div>
-
-      <div class="pt-6 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
-        <span>Dream Store Strategy 2026</span>
-        <span class="text-[#00D9FF] font-en">Presented by ProMedia</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- FLOATING BOTTOM NAVIGATION BAR -->
-  <footer class="relative z-30 w-full max-w-4xl mx-auto pb-6 px-4">
-    <div class="glass-panel rounded-2xl px-4 sm:px-6 py-3 border border-[#6A3CF0]/40 flex items-center justify-between shadow-[0_10px_35px_rgba(0,0,0,0.5)]">
-      <!-- Previous Button -->
-      <button id="btn-prev-slide" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-[#6A3CF0]/40 text-gray-200 hover:text-white font-semibold text-sm transition flex items-center gap-2 border border-white/10 hover:border-[#6A3CF0]/50 disabled:opacity-30 disabled:pointer-events-none">
-        <i data-lucide="chevron-right" class="w-4 h-4"></i>
-        <span>السابق</span>
-      </button>
-
-      <!-- Center Slide Counter & Quick Switch -->
-      <div class="flex items-center gap-3">
-        <div class="flex items-center gap-1.5 text-sm font-en">
-          <span id="current-slide-num" class="text-[#00D9FF] font-black text-lg">01</span>
-          <span class="text-gray-500 font-bold">/</span>
-          <span class="text-gray-400 font-bold">13</span>
-        </div>
-        <div class="h-4 w-px bg-white/10 hidden sm:block"></div>
-        <span id="current-slide-name-footer" class="text-xs text-gray-300 font-medium hidden sm:inline truncate max-w-[200px]">BRAND CHALLENGE</span>
-      </div>
-
-      <!-- Next Button -->
-      <button id="btn-next-slide" class="px-5 py-2 rounded-xl bg-gradient-to-r from-[#6A3CF0] to-[#7D52F7] hover:from-[#7D52F7] hover:to-[#00D9FF] text-white font-bold text-sm transition shadow-[0_0_20px_rgba(106,60,240,0.4)] flex items-center gap-2">
-        <span>التالي</span>
-        <i data-lucide="chevron-left" class="w-4 h-4"></i>
-      </button>
-    </div>
-  </footer>
-
-  <!-- Scripts -->
-  <script type="module" src="/src/main.js"></script>
+  <!-- Lucide icons activator -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    });
+  </script>
 </body>
 </html>
